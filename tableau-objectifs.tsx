@@ -279,7 +279,7 @@ export default function Component() {
                   <img
                     src={objectif.imageUrl || "/placeholder.svg"}
                     alt={objectif.titre}
-                    className="w-full h-48 object-cover print:h-32"
+                    className="w-full h-48 object-contain print:h-32"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
                       target.src = `/placeholder.svg?height=200&width=300&text=${encodeURIComponent(objectif.titre)}`;
