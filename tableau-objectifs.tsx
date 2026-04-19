@@ -275,25 +275,25 @@ export default function Component() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 print:grid-cols-2 print:gap-4">
             {objectifs.map((objectif) => (
               <Card key={objectif.id} className="overflow-hidden print:break-inside-avoid print:shadow-none print:border-2">
-                <div className="relative">
-                  <img
-                    src={objectif.imageUrl || "/placeholder.svg"}
-                    alt={objectif.titre}
-                    className="w-full h-48 object-contain print:h-32"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = `/placeholder.svg?height=200&width=300&text=${encodeURIComponent(objectif.titre)}`;
-                    }}
-                  />
-                  <Button
-                    variant="destructive"
-                    size="icon"
-                    className="absolute top-2 right-2 print:hidden"
-                    onClick={() => supprimerObjectif(objectif.id)}
-                  >
-                    <Trash2 className="h-4 w-4" />
-                  </Button>
-                </div>
+                <div className="relative flex h-48 items-center justify-center overflow-hidden bg-gray-100 print:h-32">
+  <img
+    src={objectif.imageUrl || "/placeholder.svg"}
+    alt={objectif.titre}
+    className="max-h-full max-w-full object-contain p-4"
+    onError={(e) => {
+      const target = e.target as HTMLImageElement
+      target.src = `/placeholder.svg?height=200&width=300&text=${encodeURIComponent(objectif.titre)}`
+    }}
+  />
+  <Button
+    variant="destructive"
+    size="icon"
+    className="absolute top-2 right-2 print:hidden"
+    onClick={() => supprimerObjectif(objectif.id)}
+  >
+    <Trash2 className="h-4 w-4" />
+  </Button>
+</div>
                 <CardHeader className="print:pb-2">
                   <CardTitle className="text-lg print:text-base">{objectif.titre}</CardTitle>
                 </CardHeader>
